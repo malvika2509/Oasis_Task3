@@ -67,15 +67,15 @@ input {
   height: 400px;
 }
 .below_div {
-  max-height: 400px;
+  max-height: 360px;
   overflow-y: scroll;
 }
 
-li {
+.list {
   font-size: 20px;
   height: 40px;
   padding: 6px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid gray;
   color: gray;
 }
 
@@ -91,9 +91,17 @@ li {
   width: 30px;
   min-height: 30px;
   cursor: pointer;
-  border: none;
   color: white;
   float: right;
-  background-color: red;
+  background-color: transparent;
   margin-right: 10px;
+  text-decoration: none !important;
+}
+.delete:hover:before {
+  border: none;
+  content: "x";
+}
+.delete:hover {
+  background-color: red;
+  border: none;
 }

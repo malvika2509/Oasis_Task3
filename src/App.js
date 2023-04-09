@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ToDoList from "./ToDoList";
 import "./App.css";
 
 export default function App() {
@@ -14,6 +15,13 @@ export default function App() {
       return [...oldItems, list];
     });
     setList("");
+  };
+  const del = (id) => {
+    setItems((oldItems) => {
+      return oldItems.filter((arrEle, index) => {
+        return index !== id;
+      });
+    });
   };
   return (
     <div className="main_div">
@@ -35,11 +43,14 @@ export default function App() {
         <div className="outer">
           <div className="below_div">
             <ul style={{ listStyleType: "none" }}>
-              {Items.map((itemval) => {
+              {Items.map((itemval, index) => {
                 return (
-                  <li>
-                    {itemval} <button className="delete">x</button>
-                  </li>
+                  <ToDoList
+                    key={index}
+                    id={index}
+                    itemval={itemval}
+                    onSelect={del}
+                  />
                 );
               })}
             </ul>

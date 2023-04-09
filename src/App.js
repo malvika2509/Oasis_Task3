@@ -3,16 +3,23 @@ import ToDoList from "./ToDoList";
 import "./App.css";
 
 export default function App() {
+  let today = new Date();
+  let date =
+    today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+  let time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  let dateTime = " ".repeat(10) + "📆" + date + " ⏰" + time;
+  const [dates, setDates] = useState(dateTime);
   const [list, setList] = useState("");
-  //array
   const [Items, setItems] = useState([]);
   const Add = (event) => {
     setList(event.target.value);
+    setDates(dateTime);
   };
 
   const List = () => {
     setItems((oldItems) => {
-      return [...oldItems, list];
+      return [...oldItems, list.concat(dates)];
     });
     setList("");
   };
@@ -45,12 +52,14 @@ export default function App() {
             <ul style={{ listStyleType: "none" }}>
               {Items.map((itemval, index) => {
                 return (
-                  <ToDoList
-                    key={index}
-                    id={index}
-                    itemval={itemval}
-                    onSelect={del}
-                  />
+                  <>
+                    <ToDoList
+                      key={index}
+                      id={index}
+                      itemval={itemval}
+                      onSelect={del}
+                    />
+                  </>
                 );
               })}
             </ul>

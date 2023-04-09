@@ -67,13 +67,14 @@ input {
   height: 400px;
 }
 .below_div {
-  max-height: 360px;
+  max-height: 400px;
   overflow-y: scroll;
 }
 
 .list {
   font-size: 20px;
-  height: 40px;
+  min-height: 40px;
+  height: fit-content;
   padding: 6px;
   border-bottom: 1px solid gray;
   color: gray;
